@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>The Yellow Notebook Podcast</title>
+<meta name="description" content="A podcast about strange, intriguing, brilliant, and other ideas from little yellow notebooks. Ideas for the good of the community. A prototype site.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Yellow Notebook Podcast">
+<meta property="og:description" content="Ideas from little yellow notebooks, for the good of the community. Sincere, inspiring, and a little bit funny.">
+<meta property="og:image" content="https://dkvstrien.github.io/yellow-notebook/img/share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Kalam:wght@700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+</head>
+<body data-page="home">
+<a class="skip" href="#main">Skip to the page</a>
+<header class="top wrap">
+  <a class="brand" href="./"><img src="img/cover.webp" alt="" width="52" height="52"><span>The Yellow Notebook</span></a>
+  <nav aria-label="Site"><ul>
+    <li><a href="./" aria-current="page">Home</a></li>
+    <li><a href="episodes.html">Episodes</a></li>
+    <li><a href="ideas.html">Ideas</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul></nav>
+</header>
+
+<main id="main" class="wrap">
+  <section class="hero">
+    <img src="img/open-notebook.webp" alt="A hand-drawn open yellow notebook. The left page says: I have an idea. The right page has a drawing of a spork." width="720" height="437">
+    <h1>I have an idea.</h1>
+    <p class="lede">A podcast about strange, intriguing, brilliant, and other ideas from little yellow notebooks. We explore ideas for the good of the community. Sincere, inspiring, and a little bit funny.</p>
+    <p>New episodes happen every other Thursday, most likely.</p>
+  </section>
+
+  <blockquote class="paper tilt-l">
+    <p class="said">I should just give some of my friends a notebook and tell them to write down their ideas and we should talk about it. And that's pretty much it.</p>
+    <p class="who">Tim, explaining the whole thing, <a href="episodes.html#ep-1">episode 1</a>, 0:05:48</p>
+  </blockquote>
+
+  <h2>Listen</h2>
+  <ul class="listen">
+    <li><a href="https://open.spotify.com/show/0IHeq7skKmtrMpM7sly6iV">Spotify</a></li>
+    <li><a href="https://podcasts.apple.com/us/podcast/the-yellow-notebook-podcast/id1852625923">Apple Podcasts</a></li>
+    <li><a href="https://media.rss.com/yellow-notebook-podcast/feed.xml">RSS</a></li>
+  </ul>
+  <p class="small">RSS is for any other podcast app: copy that link and paste it in.</p>
+
+  <h2>Newest episode</h2>
+  <div id="newest" class="newest">
+    <p class="meta">Episode 28 &middot; 5 Nov 2026</p>
+    <h3>The Philosophy and Politics of the Hallowed Weenie in Disguise and, Eventually, Death feat. Robert Lucas</h3>
+    <p><a href="episodes.html">All the episodes</a></p>
+  </div>
+
+  <h2>From the notebooks</h2>
+  <p>Three ideas, picked at random. Isaac says the genres are &ldquo;good, bad, and terrible&rdquo;. You decide which.</p>
+  <ul id="ideas-teaser" class="ideas-teaser idea-list"></ul>
+  <p><a href="ideas.html">All the ideas so far</a></p>
+
+  <h2>Made from an episode</h2>
+  <p>Ideas from the show, turned into things you can poke at.</p>
+  <div class="made">
+    <a class="paper tilt-r" href="play/coupling/">
+      <h3>The Coupling Machine</h3>
+      <p>Ideas come in pairs. Pull the lever and get a saying in Tim's format.</p>
+      <p class="from">From episode 28: &ldquo;Reward is the generous brother of risk.&rdquo;</p>
+    </a>
+    <a class="paper tilt-l" href="play/fruit-salad/">
+      <h3>The Fruit Salad Paradox</h3>
+      <p>Why the bag is always full of the candy nobody wants. Cards to share.</p>
+      <p class="from">From episode 28, named by Isaac.</p>
+    </a>
+  </div>
+</main>
+<div id="player" class="player" hidden><div class="what"><span class="label"></span><button type="button" class="close">close</button></div><audio controls preload="none"></audio></div>
+
+<footer class="wrap">
+  <p><strong>This is a prototype by Dan, not the official site.</strong> The real one is <a href="https://theyellownotebook.com">theyellownotebook.com</a>, which the show itself calls &ldquo;the relevant but underdeveloped website&rdquo;.</p>
+  <p>Quotes are from machine transcripts of the public episodes, so a word here and there may be off. Cover art by Katrina Van Strien.</p>
+</footer>
+<script src="site.js"></script>
+</body>
+</html>

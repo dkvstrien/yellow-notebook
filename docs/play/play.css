@@ -1,0 +1,80 @@
+/* Shared look for the play pages: plain, handmade, a little rough. */
+:root {
+  --mustard: #ddc877;
+  --paper: #f3e3b0;
+  --orange: #e69b00;
+  --ink: #002c33;
+  --teal: #0b4a52;
+  --marker: 'Permanent Marker', 'Marker Felt', 'Comic Sans MS', cursive;
+  --quote: 'Kalam', 'Marker Felt', 'Comic Sans MS', cursive;
+  --hand: 'Patrick Hand', 'Chalkboard SE', 'Comic Sans MS', cursive;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--mustard);
+  background-image: radial-gradient(rgba(0, 44, 51, .07) 1px, transparent 1.4px);
+  background-size: 9px 11px;
+  color: var(--ink);
+  font: 21px/1.35 var(--hand);
+}
+main { max-width: 640px; margin: 0 auto; padding: 14px 16px 30px; }
+a { color: var(--ink); }
+.back { display: inline-block; font-size: 18px; margin: 4px 0 6px; }
+h1 {
+  font: 400 40px/1.05 var(--marker);
+  margin: 10px 0 6px;
+  transform: rotate(-1.5deg);
+}
+h1 span { background: linear-gradient(transparent 62%, var(--paper) 62%, var(--paper) 88%, transparent 88%); }
+h2 { font: 400 26px/1.1 var(--marker); margin: 28px 0 8px; transform: rotate(-.8deg); }
+.lede { margin: 6px 0 14px; }
+.small { font-size: 17px; }
+
+/* wobbly hand-drawn box: uneven radii fake a shaky outline */
+.box {
+  background: var(--paper);
+  border: 3px solid var(--ink);
+  border-radius: 255px 14px 225px 12px / 12px 225px 14px 255px;
+  box-shadow: 4px 5px 0 rgba(0, 44, 51, .25);
+  padding: 14px;
+}
+button, .btn {
+  font: 400 20px/1 var(--marker);
+  color: var(--ink);
+  background: var(--paper);
+  border: 3px solid var(--ink);
+  border-radius: 15px 225px 15px 255px / 255px 15px 225px 15px;
+  padding: 11px 16px 9px;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 var(--ink);
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+button:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+button.big { background: var(--orange); font-size: 26px; padding: 14px 22px 11px; }
+button.teal { background: var(--teal); color: var(--paper); }
+button:focus-visible, input:focus-visible { outline: 3px dashed var(--teal); outline-offset: 3px; }
+input[type=text] {
+  font: 20px var(--hand);
+  color: var(--ink);
+  background: #fff8dc;
+  border: 0;
+  border-bottom: 3px solid var(--ink);
+  border-radius: 4px 4px 0 0;
+  padding: 6px 8px;
+  width: 100%;
+  min-width: 0;
+}
+.row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.where {
+  font-size: 17px;
+  border-left: 4px solid var(--orange);
+  padding: 4px 0 4px 10px;
+  margin: 22px 0 0;
+}
+footer { font-size: 15px; margin-top: 34px; padding-top: 10px; border-top: 2px dashed rgba(0, 44, 51, .4); opacity: .85; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+input::placeholder { color: var(--ink); opacity: .4; }

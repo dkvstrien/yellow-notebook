@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>The Coupling Machine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@700&family=Patrick+Hand&family=Permanent+Marker&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../play.css">
+<style>
+  .machine { margin-top: 10px; text-align: center; }
+  .reel {
+    display: grid; grid-template-columns: 52px 1fr 52px; align-items: center;
+    background: #fff8dc; border: 3px solid var(--ink);
+    border-radius: 12px 200px 12px 180px / 180px 12px 200px 12px;
+    min-height: 66px; touch-action: pan-y; user-select: none; -webkit-user-select: none;
+    overflow: hidden;
+  }
+  .reel.mid { background: var(--orange); }
+  .reel button { box-shadow: none; border: 0; background: none; font-size: 30px; padding: 8px 0; height: 100%; }
+  .reel button:active { transform: none; opacity: .5; }
+  .word { font: 700 27px/1.1 var(--quote); padding: 8px 2px 4px; overflow-wrap: anywhere; }
+  .reel.spinning .word { filter: blur(1.2px); opacity: .75; }
+  .reel.landed .word { animation: thunk .25s ease-out; }
+  @keyframes thunk { 0% { transform: translateY(-14px); } 70% { transform: translateY(3px); } 100% { transform: none; } }
+  .joiner { font-size: 20px; margin: 4px 0; transform: rotate(-2deg); }
+  .lever { margin-top: 16px; width: 100%; }
+  .saying {
+    font: 700 34px/1.2 var(--quote);
+    margin: 22px 4px 4px; transform: rotate(-1deg); min-height: 2.4em;
+  }
+  .saying em { font-style: normal; background: linear-gradient(transparent 70%, #fff2c4 70%, #fff2c4 92%, transparent 92%); }
+  .stamp {
+    display: inline-block; font: 400 15px/1 var(--marker); color: #b03a00;
+    border: 2px solid #b03a00; border-radius: 6px; padding: 5px 7px 3px; transform: rotate(-4deg);
+    margin: 6px 0 0; visibility: hidden;
+  }
+  .stamp.on { visibility: visible; }
+  .acts { margin-top: 14px; justify-content: center; }
+  .yours label { display: block; font-size: 17px; margin-top: 8px; }
+  .yours .row { margin-top: 12px; }
+  #cardWrap { display: none; margin-top: 16px; text-align: center; }
+  #cardWrap.on { display: block; }
+  #cardWrap img { width: 100%; max-width: 420px; border: 2px solid rgba(0,44,51,.3); display: block; margin: 0 auto 10px; }
+  @media (min-width: 700px) {
+    .reels { display: grid; grid-template-columns: 1fr auto 1.25fr auto 1fr; gap: 8px; align-items: center; }
+    .reels .joiner { margin: 0; }
+    .word { font-size: 24px; }
+    .reel { grid-template-columns: 34px 1fr 34px; }
+    .saying { font-size: 44px; }
+    main { max-width: 860px; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <a class="back" href="../../">&larr; back to the notebook</a>
+  <h1><span>The Coupling Machine</span></h1>
+  <p class="lede">Tim says ideas come in pairs. Spin the reels, nudge them with the arrows (or swipe), and see what the pair turns out to be related to. Some of these will be deep. Most will not.</p>
+
+  <section class="machine box" aria-label="The machine">
+    <div class="reels">
+      <div class="reel" id="reelA" data-reel="a">
+        <button type="button" data-step="-1" aria-label="Previous first word">&lsaquo;</button>
+        <div class="word" aria-live="polite"></div>
+        <button type="button" data-step="1" aria-label="Next first word">&rsaquo;</button>
+      </div>
+      <div class="joiner">is the</div>
+      <div class="reel mid" id="reelR" data-reel="r">
+        <button type="button" data-step="-1" aria-label="Previous relationship">&lsaquo;</button>
+        <div class="word" aria-live="polite"></div>
+        <button type="button" data-step="1" aria-label="Next relationship">&rsaquo;</button>
+      </div>
+      <div class="joiner">of</div>
+      <div class="reel" id="reelB" data-reel="b">
+        <button type="button" data-step="-1" aria-label="Previous second word">&lsaquo;</button>
+        <div class="word" aria-live="polite"></div>
+        <button type="button" data-step="1" aria-label="Next second word">&rsaquo;</button>
+      </div>
+    </div>
+    <button type="button" class="big lever" id="spin">Pull the lever</button>
+  </section>
+
+  <p class="saying" id="saying" aria-live="polite"></p>
+  <span class="stamp" id="stamp">said on the show</span>
+
+  <div class="row acts">
+    <button type="button" id="tims">Tim's pairs</button>
+    <button type="button" class="teal" id="makeCard">Make it a card</button>
+  </div>
+
+  <div id="cardWrap">
+    <img id="cardImg" alt="The saying drawn as a notebook card">
+    <div class="row acts">
+      <button type="button" id="save">Save the card</button>
+      <button type="button" id="share" hidden>Share it</button>
+    </div>
+  </div>
+
+  <h2>Your turn</h2>
+  <form class="box yours" id="yours" autocomplete="off">
+    <label for="ya">This thing&hellip;</label>
+    <input type="text" id="ya" maxlength="28" placeholder="Coffee">
+    <label for="yr">&hellip;is the (what?)&hellip;</label>
+    <input type="text" id="yr" maxlength="32" placeholder="anxious cousin">
+    <label for="yb">&hellip;of this thing.</label>
+    <input type="text" id="yb" maxlength="28" placeholder="sleep">
+    <div class="row"><button type="submit">Couple them</button> <span class="small" id="yoursMsg"></span></div>
+  </form>
+
+  <p class="where">Where this came from: Tim, on the 5 Nov 2026 episode, at 1:11:56: &ldquo;Reward is the generous brother of risk.&rdquo; And at 1:13:35: &ldquo;Wisdom is the sister of faith.&rdquo; Isaac, at 1:12:04: &ldquo;I need to see this written down.&rdquo; So here it is, written down.</p>
+
+  <footer>A prototype by Dan, not the official Yellow Notebook site. Made for fun from <i>The Yellow Notebook Podcast</i>.</footer>
+</main>
+
+<canvas id="card" hidden></canvas>
+<script src="../card.js"></script>
+<script>
+(function () {
+  // Pairs said on the show (Tim, 5 Nov 2026), checked against the transcript
+  var SAID = [
+    { a: "Reward", r: "generous brother", b: "risk", at: "1:11:56" },
+    { a: "Risk", r: "ugly brother", b: "generosity", at: "1:11:48" },
+    { a: "Wisdom", r: "sister", b: "faith", at: "1:13:35" }
+  ];
+  // More pairs in the same spirit (not from the show)
+  var PAIRS = [
+    ["Rest", "work"], ["Coffee", "sleep"], ["Patience", "hope"], ["Courage", "fear"],
+    ["Honesty", "kindness"], ["Saving", "spending"], ["Listening", "talking"], ["Curiosity", "boredom"],
+    ["Home", "adventure"], ["Laughter", "tears"], ["Rain", "harvest"], ["Practice", "talent"],
+    ["Leftovers", "dinner"], ["A nap", "ambition"], ["Doubt", "faith"], ["Giving", "receiving"],
+    ["Humility", "confidence"], ["Grief", "love"], ["A question", "an answer"], ["Silence", "music"],
+    ["Chaos", "a good idea"], ["Melon", "fruit salad"], ["The Tootsie Roll", "Halloween"], ["Monday", "the weekend"],
+    ["Failure", "progress"], ["Bedtime", "morning"], ["Writing it down", "remembering"]
+  ];
+  var RELS = [
+    "generous brother", "ugly brother", "sister", "beautiful brother", "quiet cousin", "older sister",
+    "evil twin", "favourite aunt", "sensible uncle", "loud cousin", "tired sister", "second cousin",
+    "wild little brother", "patient sister", "grumpy uncle", "forgetful aunt", "sneaky twin", "shy cousin",
+    "bossy big sister", "long-lost brother", "step-cousin", "imaginary friend"
+  ];
+  function uniq(list) { var s = {}; return list.filter(function (x) { var k = x.toLowerCase(); return s[k] ? false : (s[k] = true); }); }
+  var A = uniq(SAID.map(function (p) { return p.a; }).concat(PAIRS.map(function (p) { return p[0]; })));
+  var B = uniq(SAID.map(function (p) { return p.b; }).concat(PAIRS.map(function (p) { return p[1]; })));
+
+  function Reel(el, list) {
+    this.el = el; this.list = list; this.i = 0; this.word = el.querySelector(".word");
+    var self = this;
+    el.querySelectorAll("button").forEach(function (b) {
+      b.addEventListener("click", function () { if (!spinning) self.step(+b.dataset.step); });
+    });
+    // swipe left/right to nudge
+    var x0 = null;
+    el.addEventListener("pointerdown", function (e) { if (e.target.tagName !== "BUTTON") x0 = e.clientX; });
+    el.addEventListener("pointerup", function (e) {
+      if (x0 === null || spinning) return;
+      var dx = e.clientX - x0; x0 = null;
+      if (Math.abs(dx) > 30) self.step(dx < 0 ? 1 : -1);
+    });
+    el.addEventListener("pointercancel", function () { x0 = null; });
+  }
+  Reel.prototype.show = function () { this.word.textContent = this.list[this.i]; };
+  Reel.prototype.set = function (w) {
+    var k = this.list.findIndex(function (x) { return x.toLowerCase() === w.toLowerCase(); });
+    if (k < 0) { this.list.splice(this.i + 1, 0, w); k = this.i + 1; }
+    this.i = k; this.show();
+  };
+  Reel.prototype.step = function (d) {
+    this.i = (this.i + d + this.list.length) % this.list.length; this.show(); this.land(); update();
+  };
+  Reel.prototype.land = function () {
+    var el = this.el; el.classList.remove("landed"); void el.offsetWidth; el.classList.add("landed");
+  };
+
+  var ra = new Reel(document.getElementById("reelA"), A);
+  var rr = new Reel(document.getElementById("reelR"), RELS.slice());
+  var rb = new Reel(document.getElementById("reelB"), B);
+  var spinning = false;
+
+  function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+  function current() { return { a: ra.list[ra.i], r: rr.list[rr.i], b: rb.list[rb.i] }; }
+  function said(c) {
+    return SAID.filter(function (p) { return p.a.toLowerCase() === c.a.toLowerCase() && p.r === c.r.toLowerCase() && p.b.toLowerCase() === c.b.toLowerCase(); })[0];
+  }
+  function esc(s) { return s.replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function update() {
+    var c = current(), s = said(c);
+    document.getElementById("saying").innerHTML =
+      "&ldquo;" + esc(cap(c.a)) + " is the <em>" + esc(c.r) + "</em> of " + esc(c.b) + ".&rdquo;";
+    var st = document.getElementById("stamp");
+    st.textContent = s ? "said on the show, at " + s.at : "";
+    st.classList.toggle("on", !!s);
+    document.getElementById("cardWrap").classList.remove("on");
+  }
+
+  function spin() {
+    if (spinning) return;
+    spinning = true;
+    var btn = document.getElementById("spin"); btn.textContent = "Whirring…";
+    // usually land on a pair that belongs together, sometimes on pure nonsense
+    var target;
+    if (Math.random() < 0.75) {
+      var p = PAIRS[Math.floor(Math.random() * PAIRS.length)];
+      target = { a: p[0], b: p[1] };
+    } else {
+      target = { a: A[Math.floor(Math.random() * A.length)], b: B[Math.floor(Math.random() * B.length)] };
+    }
+    var reels = [[ra, target.a], [rr, RELS[Math.floor(Math.random() * RELS.length)]], [rb, target.b]];
+    var done = 0;
+    reels.forEach(function (pair, n) {
+      var reel = pair[0], ticks = 12 + n * 7, t = 0;
+      reel.el.classList.add("spinning");
+      (function tick() {
+        reel.i = (reel.i + 1) % reel.list.length; reel.show();
+        if (++t < ticks) { setTimeout(tick, 35 + t * 4); return; }
+        reel.set(pair[1]); reel.el.classList.remove("spinning"); reel.land();
+        if (++done === 3) { spinning = false; btn.textContent = "Pull the lever"; update(); }
+      })();
+    });
+  }
+
+  var timsIdx = 0;
+  function tims() {
+    if (spinning) return;
+    var p = SAID[timsIdx++ % SAID.length];
+    ra.set(p.a); rr.set(p.r); rb.set(p.b);
+    [ra, rr, rb].forEach(function (r) { r.land(); });
+    update();
+  }
+
+  var canvas = document.getElementById("card");
+  function makeCard() {
+    if (spinning) return;
+    var c = current(), s = said(c);
+    var quote = "“" + cap(c.a) + " is the " + c.r + " of " + c.b + ".”";
+    var seed = 0; for (var i = 0; i < quote.length; i++) seed = (seed * 31 + quote.charCodeAt(i)) >>> 0;
+    notebookFontsReady().then(function () {
+      drawNotebookCard(canvas, {
+        seed: seed,
+        label: "THE IDEA OF “COUPLING”",
+        quote: quote,
+        underline: c.r.split(" ")[0],
+        attrib: s ? "— Tim, on pairing up ideas" : "— made on the Coupling Machine",
+        source: s ? "The Yellow Notebook Podcast · at " + s.at : "after Tim’s idea · The Yellow Notebook Podcast"
+      });
+      document.getElementById("cardImg").src = canvas.toDataURL("image/png");
+      var w = document.getElementById("cardWrap"); w.classList.add("on");
+      w.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+  }
+  function fileName() {
+    var c = current();
+    return ("coupling-" + c.a + "-" + c.b).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/-+$/, "") + ".png";
+  }
+
+  document.getElementById("spin").addEventListener("click", spin);
+  document.getElementById("tims").addEventListener("click", tims);
+  document.getElementById("makeCard").addEventListener("click", makeCard);
+  document.getElementById("save").addEventListener("click", function () { saveCanvas(canvas, fileName(), false); });
+  var shareBtn = document.getElementById("share");
+  try {
+    if (navigator.canShare && navigator.canShare({ files: [new File([""], "x.png", { type: "image/png" })] })) shareBtn.hidden = false;
+  } catch (e) {}
+  shareBtn.addEventListener("click", function () { saveCanvas(canvas, fileName(), true); });
+
+  document.getElementById("yours").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var a = document.getElementById("ya").value.trim(), r = document.getElementById("yr").value.trim().toLowerCase(),
+        b = document.getElementById("yb").value.trim(), msg = document.getElementById("yoursMsg");
+    if (!a || !r || !b) { msg.textContent = "Needs all three. That's the whole idea."; return; }
+    r = r.replace(/^the\s+/, "").replace(/\s+of$/, "");
+    ra.set(a); rr.set(r); rb.set(b);
+    [ra, rr, rb].forEach(function (x) { x.land(); });
+    msg.textContent = "Coupled. They're in the reels now.";
+    update();
+    document.getElementById("saying").scrollIntoView({ behavior: "smooth", block: "center" });
+  });
+
+  ra.set("Reward"); rr.set("generous brother"); rb.set("risk"); update();
+})();
+</script>
+</body>
+</html>

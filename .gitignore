@@ -1,0 +1,6 @@
+# Transcripts, audio and review notes stay on this Mac; only docs/ is published.
+research/
+.scratch/
+.DS_Store
+# Working notes for agents stay local.
+CLAUDE.md

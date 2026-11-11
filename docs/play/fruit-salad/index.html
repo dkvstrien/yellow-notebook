@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>The Fruit Salad Paradox</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@700&family=Patrick+Hand&family=Permanent+Marker&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../play.css">
+<style>
+  .strip {
+    display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory;
+    padding: 6px 2px 12px; margin: 0 -16px; padding-left: 16px; padding-right: 16px;
+    scrollbar-width: none; -webkit-overflow-scrolling: touch;
+  }
+  .strip::-webkit-scrollbar { display: none; }
+  .card { flex: 0 0 86%; scroll-snap-align: center; text-align: center; }
+  .card img { width: 100%; display: block; border: 2px solid rgba(0,44,51,.25); background: var(--mustard); aspect-ratio: 1080 / 1350; }
+  .card button { margin-top: 10px; font-size: 18px; }
+  .nav { justify-content: center; margin-top: 4px; }
+  .dots { display: flex; gap: 8px; }
+  .dots span { cursor: pointer; width: 12px; height: 12px; border: 2px solid var(--ink); border-radius: 50% 40% 55% 45%; }
+  .dots span.on { background: var(--ink); }
+  .nav button { font-size: 22px; padding: 6px 14px 4px; }
+
+  .bagzone { text-align: center; }
+  .bag {
+    width: 170px; height: 190px; margin: 18px auto 6px; position: relative; cursor: pointer;
+    background: #c9a46a; border: 3px solid var(--ink);
+    border-radius: 18px 22px 30px 26px / 40px 36px 22px 20px;
+    box-shadow: 5px 6px 0 rgba(0,44,51,.25);
+    display: flex; align-items: center; justify-content: center; flex-direction: column;
+    font: 400 20px/1.05 var(--marker); padding: 10px; user-select: none; -webkit-user-select: none;
+  }
+  .bag::before { /* crumpled top */
+    content: ""; position: absolute; top: -14px; left: 14px; right: 10px; height: 26px;
+    background: #b8925a; border: 3px solid var(--ink); border-radius: 50% 40% 10% 10% / 80% 70% 10% 10%;
+  }
+  .bag small { font: 16px var(--hand); margin-top: 6px; }
+  .bag.shake { animation: shake .6s; }
+  @keyframes shake {
+    0%,100% { transform: rotate(0); } 15% { transform: rotate(-14deg) translateY(-6px); } 30% { transform: rotate(12deg); }
+    45% { transform: rotate(-10deg) translateY(-4px); } 60% { transform: rotate(8deg); } 80% { transform: rotate(-4deg); }
+  }
+  .pile { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; min-height: 92px; margin: 12px 0 4px; }
+  .piece {
+    width: 74px; padding: 6px 2px 4px; background: #fff8dc; border: 2px solid var(--ink);
+    border-radius: 10px 40px 12px 36px / 36px 12px 40px 10px; font-size: 14px; line-height: 1.05;
+    animation: drop .45s ease-out both;
+  }
+  .piece b { display: block; font-size: 32px; line-height: 1.1; font-weight: 400; }
+  .piece.good { background: var(--orange); }
+  @keyframes drop { from { opacity: 0; transform: translateY(-50px) rotate(-30deg); } to { opacity: 1; } }
+  .verdict { font: 400 24px/1.2 var(--marker); min-height: 1.3em; margin: 6px 0; transform: rotate(-1deg); }
+  .tally { font-size: 17px; }
+  @media (min-width: 700px) {
+    main { max-width: 900px; }
+    .card { flex-basis: 40%; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <a class="back" href="../../">&larr; back to the notebook</a>
+  <h1><span>The Fruit Salad Paradox</span></h1>
+  <p class="lede">Isaac&rsquo;s name for the mixed bag that is mostly stuff nobody wants. Swipe through the cards. Each one saves as a picture.</p>
+
+  <div class="strip" id="strip" aria-label="Cards"></div>
+  <div class="row nav">
+    <button type="button" id="prev" aria-label="Previous card">&lsaquo;</button>
+    <div class="dots" id="dots"></div>
+    <button type="button" id="next" aria-label="Next card">&rsaquo;</button>
+  </div>
+
+  <h2>Shake the bag</h2>
+  <section class="box bagzone">
+    <p class="small" style="margin:0">A fresh mixed bag. Variety! Shake it and see what you get.</p>
+    <div class="bag" id="bag" role="button" tabindex="0" aria-label="Shake the bag">MIXED BAG<small>assorted favourites*</small></div>
+    <div class="small">*some</div>
+    <div class="pile" id="pile" aria-live="polite"></div>
+    <div class="verdict" id="verdict"></div>
+    <button type="button" class="big" id="shake">Shake it</button>
+    <p class="tally" id="tally"></p>
+  </section>
+
+  <p class="where">Where this came from: the 5 Nov 2026 episode, from about 0:19:43. Andrew complains about mixed bags of candy, Isaac names the paradox at 0:22:48, and Tim (0:32:49) suggests Build-a-Bear for candy. Quotes are from a machine transcript, checked word for word against it.</p>
+
+  <footer>A prototype by Dan, not the official Yellow Notebook site. Made for fun from <i>The Yellow Notebook Podcast</i>.</footer>
+</main>
+
+<script src="../card.js"></script>
+<script>
+(function () {
+  // Every quote below is word for word from the episode transcript (5 Nov 2026).
+  var CARDS = [
+    { file: "the-fruit-salad-paradox", label: "A NAME FOR IT", quote: "“The fruit salad paradox.”", max: 120,
+      underline: "paradox",
+      aside: "“the least amount of things in the fruit salad are the things that people really like and they fill it with filler.”",
+      attrib: "— Isaac", source: "The Yellow Notebook Podcast · at 0:22:48" },
+    { file: "exhibit-a-melon", label: "EXHIBIT A: MELON", quote: "“And the filler is usually a melon because one melon you can get a ton out of.”",
+      underline: "melon", aside: "“People pick the strawberries out and the blueberries out.”",
+      attrib: "— Isaac", source: "The Yellow Notebook Podcast · at 0:23:06", cover: "#e8a92a" },
+    { file: "exhibit-b-starburst", label: "EXHIBIT B: STARBURST", quote: "“Like Starburst, you’re always left with the yellows and oranges.”",
+      underline: "yellows", aside: "“Like, what am I even doing with these?”",
+      attrib: "— Isaac", source: "The Yellow Notebook Podcast · at 0:23:30" },
+    { file: "exhibit-c-the-office-bowl", label: "EXHIBIT C: THE OFFICE BOWL", quote: "“At our work, there’s a bowl of candy and the M and M’s never get touched.”",
+      underline: "never", aside: "“No one wants M and M’s.”",
+      attrib: "— Andrew", source: "The Yellow Notebook Podcast · at 0:20:28", cover: "#e8a92a" },
+    { file: "exhibit-d-the-mixed-bag", label: "EXHIBIT D: THE MIXED BAG", quote: "“The mixed bag is 50% undesirable.”", max: 120,
+      underline: "undesirable", aside: "“Also get rid of Tootsie Rolls forever.”",
+      attrib: "— Andrew", source: "The Yellow Notebook Podcast · at 0:22:10" },
+    { file: "the-fix-build-a-bag", label: "A POSSIBLE FIX", quote: "“Build a bear, but, like, build a bag of candy.”",
+      underline: "bag", aside: "“make your own mixed bag of the stuff you want.”",
+      attrib: "— Tim", source: "The Yellow Notebook Podcast · at 0:32:49", cover: "#e8a92a" }
+  ];
+
+  var strip = document.getElementById("strip"), dots = document.getElementById("dots");
+  var canvases = [];
+  CARDS.forEach(function (c, i) {
+    var fig = document.createElement("figure"); fig.className = "card"; fig.style.margin = "0";
+    var img = document.createElement("img"); img.alt = c.label + ": " + c.quote + " " + (c.aside || "") + " " + c.attrib;
+    var btn = document.createElement("button"); btn.type = "button"; btn.textContent = "Save this card";
+    var cv = document.createElement("canvas"); canvases.push(cv);
+    btn.addEventListener("click", function () { saveCanvas(cv, "fruit-salad-" + (i + 1) + "-" + c.file + ".png", true); });
+    fig.appendChild(img); fig.appendChild(btn); strip.appendChild(fig);
+    var d = document.createElement("span"); dots.appendChild(d);
+  });
+  notebookFontsReady().then(function () {
+    CARDS.forEach(function (c, i) {
+      c.seed = 11 + i * 17; c.tilt = i % 2 ? 1.6 : -2.2;
+      drawNotebookCard(canvases[i], c);
+      strip.children[i].querySelector("img").src = canvases[i].toDataURL("image/png");
+    });
+  });
+
+  // which card sits nearest the middle of the strip
+  function index() {
+    var mid = strip.scrollLeft + strip.clientWidth / 2, best = 0, bd = 1e9;
+    [].forEach.call(strip.children, function (el, i) {
+      var d = Math.abs(el.offsetLeft + el.clientWidth / 2 - mid);
+      if (d < bd) { bd = d; best = i; }
+    });
+    return best;
+  }
+  var cur = 0, settle = null, moving = false;
+  function mark() { [].forEach.call(dots.children, function (d, i) { d.classList.toggle("on", i === cur); }); }
+  function go(k) {
+    cur = Math.max(0, Math.min(CARDS.length - 1, k)); mark(); moving = true;
+    var el = strip.children[cur];
+    strip.scrollTo({ left: el.offsetLeft - (strip.clientWidth - el.clientWidth) / 2, behavior: "smooth" });
+  }
+  strip.addEventListener("scroll", function () {
+    clearTimeout(settle);
+    settle = setTimeout(function () { moving = false; cur = index(); mark(); }, 120);
+    if (!moving) { cur = index(); mark(); }
+  });
+  strip.addEventListener("scrollend", function () { moving = false; cur = index(); mark(); });
+  document.getElementById("prev").addEventListener("click", function () { go(cur - 1); });
+  document.getElementById("next").addEventListener("click", function () { go(cur + 1); });
+  [].forEach.call(dots.children, function (d, i) { d.addEventListener("click", function () { go(i); }); });
+  mark();
+
+  // The bag. It is always mostly filler. That's the paradox.
+  var FILLER = [
+    ["🍈", "honeydew"], ["🍈", "cantaloupe"], ["🍇", "green grape"],
+    ["🟨", "yellow Starburst"], ["🟧", "orange Starburst"], ["🟫", "Tootsie Roll"],
+    ["🍬", "strawberry Tootsie Roll"], ["🟤", "regular M&M’s"], ["🪨", "a rock"]
+  ];
+  var GOOD = [["🍓", "strawberry"], ["🫐", "blueberry"], ["🟥", "red Starburst"], ["🥜", "peanut M&M’s"]];
+  var shakes = 0, goodTotal = 0, pieceTotal = 0;
+  function pick(list) { return list[Math.floor(Math.random() * list.length)]; }
+  function shake() {
+    var bag = document.getElementById("bag");
+    bag.classList.remove("shake"); void bag.offsetWidth; bag.classList.add("shake");
+    var n = 6, good = Math.random() < 0.55 ? 1 : 0; // at most one good thing. Ever.
+    var items = [];
+    for (var i = 0; i < n - good; i++) items.push([pick(FILLER), false]);
+    for (var j = 0; j < good; j++) items.splice(Math.floor(Math.random() * (items.length + 1)), 0, [pick(GOOD), true]);
+    var pile = document.getElementById("pile"); pile.innerHTML = "";
+    items.forEach(function (it, k) {
+      var p = document.createElement("div"); p.className = "piece" + (it[1] ? " good" : "");
+      p.style.animationDelay = (0.25 + k * 0.08) + "s";
+      p.innerHTML = "<b aria-hidden='true'>" + it[0][0] + "</b>" + it[0][1];
+      pile.appendChild(p);
+    });
+    shakes++; goodTotal += good; pieceTotal += n;
+    var lines = good
+      ? ["Five filler, one " + items.filter(function (x) { return x[1]; })[0][0][1] + ". Variety.", "One good one. Don’t get used to it.", "Five filler, one keeper. As foretold."]
+      : ["Six filler. Isaac called it.", "All filler. Very real problem.", "Nothing good. Have a Tootsie Roll.", "Zero for six. Far reaching ramifications."];
+    if (items.some(function (x) { return x[0][1] === "a rock"; })) lines = ["Someone put a rock in here."];
+    document.getElementById("verdict").textContent = pick(lines);
+    document.getElementById("tally").textContent = "So far: " + shakes + (shakes === 1 ? " shake, " : " shakes, ") +
+      (pieceTotal - goodTotal) + " filler, " + goodTotal + " good. That’s " +
+      Math.round(100 * (pieceTotal - goodTotal) / pieceTotal) + "% filler.";
+  }
+  document.getElementById("shake").addEventListener("click", shake);
+  var bagEl = document.getElementById("bag");
+  bagEl.addEventListener("click", shake);
+  bagEl.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); shake(); } });
+})();
+</script>
+</body>
+</html>
