@@ -1,49 +1,339 @@
 {
- "about": "Ideas pitched on The Yellow Notebook Podcast. 'quote' is word for word from a machine transcript; 't' is where it starts in the episode (h:mm:ss). 'who' is who pitched it. To add one, copy an entry and change it.",
+ "about": "Ideas pitched on The Yellow Notebook Podcast. 'quote' is word for word from a machine transcript; 't' is where it starts in the episode (h:mm:ss). 'who' is who pitched it. To add one, copy an entry and change it. 'img' is a stand-in notebook photo in docs/img/hand/ (computer-made, not their real notebooks); 'imgText' is what it says, used as alt text.",
  "ideas": [
-  {"idea": "Bring pop-ups back", "quote": "Bring pop ups back, baby.", "who": "Andrew and Tim", "ep": 1, "t": "0:04:35", "note": "The first idea ever said on the show. Andrew asked if it counted; Tim said this."},
-  {"idea": "Give your friends yellow notebooks and ask for their ideas", "quote": "I should just give some of my friends a notebook and tell them to write down their ideas and we should talk about it. And that's pretty much it.", "who": "Tim", "ep": 1, "t": "0:05:48", "note": "Where all of this came from."},
-  {"idea": "Skip the five-star reviews. Read the three-star ones.", "quote": "Five star reviews. Who looks at five stars? You go to the three. You go to the third star.", "who": "Tim", "ep": 1, "t": "0:09:03"},
-  {"idea": "Take a laundry bag on holiday", "quote": "Bring with you a laundry bag. You can throw all your dirty laundry into there.", "who": "Andrew", "ep": 1, "t": "0:14:09"},
-  {"idea": "Sporks should be three-fifths fork", "quote": "If you break up the name, there's two letters of spoon and three letters of fork. So it should be at least three fifths fork, two fifths spoon.", "who": "Isaac", "ep": 1, "t": "0:15:25"},
-  {"idea": "Don't copy the login code. Memorise it.", "quote": "Don't copy that. Just memorize it because you need to work on your memory.", "who": "Andrew", "ep": 1, "t": "0:17:26"},
-  {"idea": "Relief of missing out", "quote": "I'm crediting the Internet and my wife and some comedian, but I just really like that idea.", "who": "Tim", "ep": 1, "t": "0:20:43", "note": "Not his idea, he says, but he's telling more people."},
-  {"idea": "The opinion curve", "quote": "I will have an opinion because it's fun to have an opinion about something that doesn't matter.", "who": "Isaac", "ep": 1, "t": "0:25:53", "note": "A U-shaped chart. Left side: aliens, toilet seats, sporks. Right side: things worth dying for. Middle: things you can just talk about."},
-  {"idea": "Draw pictures in the notebook", "quote": "turns out pictures are maybe actually worth a thousand words.", "who": "Tim", "ep": 1, "t": "0:30:45"},
-  {"idea": "No stock photos", "quote": "Do not use stock photos in anything you do, please.", "who": "Andrew", "ep": 1, "t": "0:32:47", "note": "There are none on this site either."},
-  {"idea": "Bring back seeded watermelons", "quote": "Seeded seeded watermelons taste objectively better than seedless watermelon.", "who": "Isaac", "ep": 1, "t": "0:38:45"},
-  {"idea": "Put your glasses in the freezer", "quote": "Put your glasses in the freezer. Not all of them.", "who": "Tim", "ep": 1, "t": "0:47:25", "note": "Drinking glasses."},
-  {"idea": "Houses should come with a map of the wiring", "quote": "if I just had a sheet that... Or like a plan view of my house that had this is connected to this and this is the breaker.", "who": "Andrew", "ep": 1, "t": "0:58:48"},
-  {"idea": "Bible verses, out of context, as signs for the house", "quote": "I love the idea of taking bible verses entirely out of context and making signs for your house.", "who": "Isaac", "ep": 1, "t": "1:02:43", "note": "Example: \"cleanse your hands, you sinners\", in the bathroom."},
-  {"idea": "Cheer on people who act on their ideas", "quote": "We said that's a good idea. They believed us and now it exists.", "who": "Tim", "ep": 1, "t": "1:09:59", "note": "About the sewing club, the first good thing to come out of the notebooks."},
-
-  {"idea": "Try a different opening every time", "quote": "I kinda like the idea of, you know, like, trying different openings is an idea itself.", "who": "Tim", "ep": 2, "t": "0:03:32"},
-  {"idea": "Find one thing that isn't an idea", "quote": "So we are looking for the elusive, ah, that's not an idea.", "who": "Isaac", "ep": 2, "t": "0:03:57", "note": "Still open."},
-  {"idea": "Keep a catalogue of every idea", "quote": "I will start a catalog of ideas. I'll take that on.", "who": "Isaac", "ep": 2, "t": "0:07:36", "note": "This page."},
-  {"idea": "LEGO instructions that make the set harder", "quote": "We'll make the instructions harder, and then we'll send it back.", "who": "Tim", "ep": 2, "t": "0:17:49", "note": "Started by something Andrew said. Isaac added burnt edges, like a treasure map."},
-  {"idea": "Reminders to maintain everything in your house", "quote": "Maybe you have a roof.", "who": "Andrew", "ep": 2, "t": "0:20:43"},
-  {"idea": "Drawers on the bottom, doors on the top", "quote": "You should just only have drawers on the bottom, only have doors on the top", "who": "Isaac", "ep": 2, "t": "0:30:10", "note": "His dad's rule. Dad makes cabinets."},
-  {"idea": "Something to replace drywall", "quote": "I hope that someone, someday, we can have a guest that has the answer to something that replaces drywall in houses. That's a plea.", "who": "Isaac", "ep": 2, "t": "0:37:09"},
-  {"idea": "Turn the gym into a power plant", "quote": "You wanna turn a gym into a power plant?", "who": "Andrew", "ep": 2, "t": "0:40:27", "note": "Andrew's idea. That's Isaac cutting to the chase."},
-  {"idea": "A printer button that just stops printing", "quote": "How about someone invents a printer that when you're printing something, you can hit a button and it stops the printing immediately.", "who": "Isaac", "ep": 2, "t": "0:45:30"},
-  {"idea": "Admit you make stuff up sometimes", "quote": "Just admit that you make stuff up sometimes. This is my idea.", "who": "Tim", "ep": 2, "t": "0:51:31"},
-  {"idea": "Colour-code lies", "quote": "So we should have a whole rainbow of types of lies.", "who": "Isaac", "ep": 2, "t": "0:58:00"},
-  {"idea": "Always be learning one secret skill", "quote": "Everyone should, at all times, be learning at least one secret skill that they can pull out later at a party.", "who": "Isaac", "ep": 2, "t": "1:07:44"},
-  {"idea": "Anything that comes in threes is a sandwich", "quote": "Anything that comes in threes is a sandwich. That's my idea.", "who": "Isaac", "ep": 2, "t": "1:22:05"},
-  {"idea": "Idaho and Istanbul are on the same planet", "quote": "It feels like they are in different worlds, but they're actually... You could have someone going from Idaho to Istanbul.", "who": "Andrew", "ep": 2, "t": "1:23:19", "note": "Not an idea so much as a thought. Possibly the elusive one."},
-
-  {"idea": "Friday dinner: draw the restaurant out of a hat", "quote": "it's not what do you want I don't care what do you want it doesn't matter", "who": "Robert Lucas", "ep": 28, "t": "0:14:13"},
-  {"idea": "Mind reading is the worst superpower", "quote": "Mind reading would be the worst superpower.", "who": "Isaac", "ep": 28, "t": "0:15:43"},
-  {"idea": "The fruit salad paradox", "quote": "the least amount of things in the fruit salad are the things that people really like and they fill it with filler.", "who": "Isaac", "ep": 28, "t": "0:22:48", "note": "Named while Andrew complained about mixed bags of candy. Andrew's add-on: get rid of Tootsie Rolls forever.", "play": "play/fruit-salad/"},
-  {"idea": "Build-a-Bear, but a bag of candy", "quote": "build a bear, but, like, build a bag of candy.", "who": "Tim", "ep": 28, "t": "0:32:46"},
-  {"idea": "Grown-ups have to dress up too", "quote": "I think that adults should have to dress up if they're gonna take their kids out trick or treating", "who": "Robert Lucas", "ep": 28, "t": "0:25:58", "note": "Robert went as a traffic cone."},
-  {"idea": "Ballots shouldn't be grey", "quote": "And I think the ballot is a simple place to start. Why is it gray?", "who": "Tim", "ep": 28, "t": "0:41:51"},
-  {"idea": "Make voting an event", "quote": "Maybe it's a pizza party.", "who": "Andrew", "ep": 28, "t": "0:47:33"},
-  {"idea": "Community spotlight: Lee's Barbershop, Olympia", "quote": "He says, hey, how are you, friend?", "who": "Robert Lucas", "ep": 28, "t": "1:00:08"},
-  {"idea": "Jail for not returning your shopping cart", "quote": "You don't return your buggy straight to jail.", "who": "Robert Lucas", "ep": 28, "t": "1:04:50", "note": "Also for not picking up after your dog."},
-  {"idea": "Coupling", "quote": "Reward is the generous brother of risk.", "who": "Tim", "ep": 28, "t": "1:11:56", "note": "Ideas come in pairs. Nobody could follow it out loud.", "play": "play/coupling/"},
-  {"idea": "Maybe don't write it down straight away", "quote": "you gain some truth if you write down your idea right away, but you lose something interesting", "who": "Isaac", "ep": 28, "t": "1:16:43", "note": "Said on a show built on writing ideas down."},
-  {"idea": "Go to the funeral", "quote": "you should try to attend this event as much as you can.", "who": "Andrew", "ep": 28, "t": "1:25:22"},
-  {"idea": "A scavenger hunt after you die", "quote": "After death scavenger hunt.", "who": "Isaac", "ep": 28, "t": "1:29:42", "note": "Clues that lead your family to where your ashes go. Robert called it phenomenal."}
+  {
+   "idea": "Bring pop-ups back",
+   "quote": "Bring pop ups back, baby.",
+   "who": "Andrew and Tim",
+   "ep": 1,
+   "t": "0:04:35",
+   "note": "The first idea ever said on the show. Andrew asked if it counted; Tim said this."
+  },
+  {
+   "idea": "Give your friends yellow notebooks and ask for their ideas",
+   "quote": "I should just give some of my friends a notebook and tell them to write down their ideas and we should talk about it. And that's pretty much it.",
+   "who": "Tim",
+   "ep": 1,
+   "t": "0:05:48",
+   "note": "Where all of this came from.",
+   "img": "tim-friends",
+   "imgText": "The page reads: #1, give my friends notebooks, then an arrow to ask for their ideas, then an arrow to talk about it, with a sketch of a stack of notebooks."
+  },
+  {
+   "idea": "Skip the five-star reviews. Read the three-star ones.",
+   "quote": "Five star reviews. Who looks at five stars? You go to the three. You go to the third star.",
+   "who": "Tim",
+   "ep": 1,
+   "t": "0:09:03"
+  },
+  {
+   "idea": "Take a laundry bag on holiday",
+   "quote": "Bring with you a laundry bag. You can throw all your dirty laundry into there.",
+   "who": "Andrew",
+   "ep": 1,
+   "t": "0:14:09",
+   "img": "andrew-list",
+   "imgText": "The page reads: Nov 12. IDEAS. 1. Bring a laundry bag on vacation. 2. Don’t copy the code. Memorize it. 3. No stock photos. 4. Every house gets a wiring plan."
+  },
+  {
+   "idea": "Sporks should be three-fifths fork",
+   "quote": "If you break up the name, there's two letters of spoon and three letters of fork. So it should be at least three fifths fork, two fifths spoon.",
+   "who": "Isaac",
+   "ep": 1,
+   "t": "0:15:25",
+   "img": "isaac-spork",
+   "imgText": "A sketch of a spork with the words: Too much spoon, not enough fork. should be 3/5 fork, and a check mark."
+  },
+  {
+   "idea": "Don't copy the login code. Memorise it.",
+   "quote": "Don't copy that. Just memorize it because you need to work on your memory.",
+   "who": "Andrew",
+   "ep": 1,
+   "t": "0:17:26"
+  },
+  {
+   "idea": "Relief of missing out",
+   "quote": "I'm crediting the Internet and my wife and some comedian, but I just really like that idea.",
+   "who": "Tim",
+   "ep": 1,
+   "t": "0:20:43",
+   "note": "Not his idea, he says, but he's telling more people."
+  },
+  {
+   "idea": "The opinion curve",
+   "quote": "I will have an opinion because it's fun to have an opinion about something that doesn't matter.",
+   "who": "Isaac",
+   "ep": 1,
+   "t": "0:25:53",
+   "note": "A U-shaped chart. Left side: aliens, toilet seats, sporks. Right side: things worth dying for. Middle: things you can just talk about.",
+   "img": "isaac-curve",
+   "imgText": "A U-shaped chart headed THE OPINION CURVE. Left top: FUN, aliens, toilet seats, sporks. Right top: WOULD DIE FOR, God, freedom. Bottom: JUST TALK, politics, tax policy. In the margin: make the middle bigger."
+  },
+  {
+   "idea": "Draw pictures in the notebook",
+   "quote": "turns out pictures are maybe actually worth a thousand words.",
+   "who": "Tim",
+   "ep": 1,
+   "t": "0:30:45"
+  },
+  {
+   "idea": "No stock photos",
+   "quote": "Do not use stock photos in anything you do, please.",
+   "who": "Andrew",
+   "ep": 1,
+   "t": "0:32:47",
+   "note": "There are none on this site either."
+  },
+  {
+   "idea": "Bring back seeded watermelons",
+   "quote": "Seeded seeded watermelons taste objectively better than seedless watermelon.",
+   "who": "Isaac",
+   "ep": 1,
+   "t": "0:38:45"
+  },
+  {
+   "idea": "Put your glasses in the freezer",
+   "quote": "Put your glasses in the freezer. Not all of them.",
+   "who": "Tim",
+   "ep": 1,
+   "t": "0:47:25",
+   "note": "Drinking glasses.",
+   "img": "tim-glasses",
+   "imgText": "The page reads: Put your glasses in the freezer. (not all of them). A sketch of a frosty glass labelled drinking glasses!"
+  },
+  {
+   "idea": "Houses should come with a map of the wiring",
+   "quote": "if I just had a sheet that... Or like a plan view of my house that had this is connected to this and this is the breaker.",
+   "who": "Andrew",
+   "ep": 1,
+   "t": "0:58:48",
+   "img": "andrew-wiring",
+   "imgText": "A plan sketch headed WHICH BREAKER?, with lines numbered 1 to 4 from a box labelled BREAKER BOX 1957? to boxes labelled KITCHEN, LIVING, BEDROOM and BASEMENT."
+  },
+  {
+   "idea": "Bible verses, out of context, as signs for the house",
+   "quote": "I love the idea of taking bible verses entirely out of context and making signs for your house.",
+   "who": "Isaac",
+   "ep": 1,
+   "t": "1:02:43",
+   "note": "Example: \"cleanse your hands, you sinners\", in the bathroom."
+  },
+  {
+   "idea": "Cheer on people who act on their ideas",
+   "quote": "We said that's a good idea. They believed us and now it exists.",
+   "who": "Tim",
+   "ep": 1,
+   "t": "1:09:59",
+   "note": "About the sewing club, the first good thing to come out of the notebooks."
+  },
+  {
+   "idea": "Try a different opening every time",
+   "quote": "I kinda like the idea of, you know, like, trying different openings is an idea itself.",
+   "who": "Tim",
+   "ep": 2,
+   "t": "0:03:32"
+  },
+  {
+   "idea": "Find one thing that isn't an idea",
+   "quote": "So we are looking for the elusive, ah, that's not an idea.",
+   "who": "Isaac",
+   "ep": 2,
+   "t": "0:03:57",
+   "note": "Still open."
+  },
+  {
+   "idea": "Keep a catalogue of every idea",
+   "quote": "I will start a catalog of ideas. I'll take that on.",
+   "who": "Isaac",
+   "ep": 2,
+   "t": "0:07:36",
+   "note": "This page."
+  },
+  {
+   "idea": "LEGO instructions that make the set harder",
+   "quote": "We'll make the instructions harder, and then we'll send it back.",
+   "who": "Tim",
+   "ep": 2,
+   "t": "0:17:49",
+   "note": "Started by something Andrew said. Isaac added burnt edges, like a treasure map."
+  },
+  {
+   "idea": "Reminders to maintain everything in your house",
+   "quote": "Maybe you have a roof.",
+   "who": "Andrew",
+   "ep": 2,
+   "t": "0:20:43"
+  },
+  {
+   "idea": "Drawers on the bottom, doors on the top",
+   "quote": "You should just only have drawers on the bottom, only have doors on the top",
+   "who": "Isaac",
+   "ep": 2,
+   "t": "0:30:10",
+   "note": "His dad's rule. Dad makes cabinets."
+  },
+  {
+   "idea": "Something to replace drywall",
+   "quote": "I hope that someone, someday, we can have a guest that has the answer to something that replaces drywall in houses. That's a plea.",
+   "who": "Isaac",
+   "ep": 2,
+   "t": "0:37:09"
+  },
+  {
+   "idea": "Turn the gym into a power plant",
+   "quote": "You wanna turn a gym into a power plant?",
+   "who": "Andrew",
+   "ep": 2,
+   "t": "0:40:27",
+   "note": "Andrew's idea. That's Isaac cutting to the chase."
+  },
+  {
+   "idea": "A printer button that just stops printing",
+   "quote": "How about someone invents a printer that when you're printing something, you can hit a button and it stops the printing immediately.",
+   "who": "Isaac",
+   "ep": 2,
+   "t": "0:45:30"
+  },
+  {
+   "idea": "Admit you make stuff up sometimes",
+   "quote": "Just admit that you make stuff up sometimes. This is my idea.",
+   "who": "Tim",
+   "ep": 2,
+   "t": "0:51:31"
+  },
+  {
+   "idea": "Colour-code lies",
+   "quote": "So we should have a whole rainbow of types of lies.",
+   "who": "Isaac",
+   "ep": 2,
+   "t": "0:58:00"
+  },
+  {
+   "idea": "Always be learning one secret skill",
+   "quote": "Everyone should, at all times, be learning at least one secret skill that they can pull out later at a party.",
+   "who": "Isaac",
+   "ep": 2,
+   "t": "1:07:44"
+  },
+  {
+   "idea": "Anything that comes in threes is a sandwich",
+   "quote": "Anything that comes in threes is a sandwich. That's my idea.",
+   "who": "Isaac",
+   "ep": 2,
+   "t": "1:22:05"
+  },
+  {
+   "idea": "Idaho and Istanbul are on the same planet",
+   "quote": "It feels like they are in different worlds, but they're actually... You could have someone going from Idaho to Istanbul.",
+   "who": "Andrew",
+   "ep": 2,
+   "t": "1:23:19",
+   "note": "Not an idea so much as a thought. Possibly the elusive one."
+  },
+  {
+   "idea": "Friday dinner: draw the restaurant out of a hat",
+   "quote": "it's not what do you want I don't care what do you want it doesn't matter",
+   "who": "Robert Lucas",
+   "ep": 28,
+   "t": "0:14:13"
+  },
+  {
+   "idea": "Mind reading is the worst superpower",
+   "quote": "Mind reading would be the worst superpower.",
+   "who": "Isaac",
+   "ep": 28,
+   "t": "0:15:43"
+  },
+  {
+   "idea": "The fruit salad paradox",
+   "quote": "the least amount of things in the fruit salad are the things that people really like and they fill it with filler.",
+   "who": "Isaac",
+   "ep": 28,
+   "t": "0:22:48",
+   "note": "Named while Andrew complained about mixed bags of candy. Andrew's add-on: get rid of Tootsie Rolls forever.",
+   "play": "play/fruit-salad/",
+   "img": "isaac-fruitsalad",
+   "imgText": "A sketch of a bowl headed THE FRUIT SALAD PARADOX, with labels grapes (filler), melon (filler), and the good stuff pointing at one small strawberry."
+  },
+  {
+   "idea": "Build-a-Bear, but a bag of candy",
+   "quote": "build a bear, but, like, build a bag of candy.",
+   "who": "Tim",
+   "ep": 28,
+   "t": "0:32:46"
+  },
+  {
+   "idea": "Grown-ups have to dress up too",
+   "quote": "I think that adults should have to dress up if they're gonna take their kids out trick or treating",
+   "who": "Robert Lucas",
+   "ep": 28,
+   "t": "0:25:58",
+   "note": "Robert went as a traffic cone."
+  },
+  {
+   "idea": "Ballots shouldn't be grey",
+   "quote": "And I think the ballot is a simple place to start. Why is it gray?",
+   "who": "Tim",
+   "ep": 28,
+   "t": "0:41:51"
+  },
+  {
+   "idea": "Make voting an event",
+   "quote": "Maybe it's a pizza party.",
+   "who": "Andrew",
+   "ep": 28,
+   "t": "0:47:33"
+  },
+  {
+   "idea": "Community spotlight: Lee's Barbershop, Olympia",
+   "quote": "He says, hey, how are you, friend?",
+   "who": "Robert Lucas",
+   "ep": 28,
+   "t": "1:00:08"
+  },
+  {
+   "idea": "Jail for not returning your shopping cart",
+   "quote": "You don't return your buggy straight to jail.",
+   "who": "Robert Lucas",
+   "ep": 28,
+   "t": "1:04:50",
+   "note": "Also for not picking up after your dog.",
+   "img": "robert-buggy",
+   "imgText": "In red capitals in a box: DON’T RETURN YOUR BUGGY? STRAIGHT TO JAIL! with a sketch of a shopping cart."
+  },
+  {
+   "idea": "Coupling",
+   "quote": "Reward is the generous brother of risk.",
+   "who": "Tim",
+   "ep": 28,
+   "t": "1:11:56",
+   "note": "Ideas come in pairs. Nobody could follow it out loud.",
+   "play": "play/coupling/",
+   "img": "tim-coupling",
+   "imgText": "The page reads: COUPLING. risk and reward. spaghetti and cucumbers. A crossed-out line, Risk is the ugly brother of. Then: Reward is the generous brother of risk."
+  },
+  {
+   "idea": "Maybe don't write it down straight away",
+   "quote": "you gain some truth if you write down your idea right away, but you lose something interesting",
+   "who": "Isaac",
+   "ep": 28,
+   "t": "1:16:43",
+   "note": "Said on a show built on writing ideas down."
+  },
+  {
+   "idea": "Go to the funeral",
+   "quote": "you should try to attend this event as much as you can.",
+   "who": "Andrew",
+   "ep": 28,
+   "t": "1:25:22"
+  },
+  {
+   "idea": "A scavenger hunt after you die",
+   "quote": "After death scavenger hunt.",
+   "who": "Isaac",
+   "ep": 28,
+   "t": "1:29:42",
+   "note": "Clues that lead your family to where your ashes go. Robert called it phenomenal."
+  }
  ]
 }

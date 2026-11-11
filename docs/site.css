@@ -10,7 +10,6 @@
   --muted: #555;
   --head: 'Archivo Black', 'Arial Black', Impact, sans-serif;
   --body: 'Space Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --hand: 'Kalam', 'Marker Felt', 'Comic Sans MS', cursive;
 }
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
@@ -30,7 +29,6 @@ h2 { font-size: clamp(24px, 6vw, 32px); margin: 44px 0 12px; }
 h3 { font-size: 19px; margin: 0 0 6px; }
 p { margin: 0 0 14px; }
 .small { font-size: 14px; color: var(--muted); }
-.hand { font-family: var(--hand); font-weight: 700; }
 .lede { font-size: 19px; }
 .skip { position: absolute; left: -999px; }
 .skip:focus { left: 8px; top: 8px; background: #fff; padding: 6px; }
@@ -65,7 +63,7 @@ footer p { margin: 0 0 8px; }
 .tilt-r { transform: rotate(.6deg); }
 
 blockquote { margin: 0 0 14px; }
-.said { font: 700 22px/1.3 var(--hand); color: var(--teal); margin: 0 0 6px; }
+.said { font: 600 20px/1.4 var(--body); color: var(--teal); margin: 0 0 6px; }
 .said::before { content: "\201C"; }
 .said::after { content: "\201D"; }
 .who { font-size: 14px; color: var(--muted); }
@@ -108,7 +106,7 @@ audio { width: 100%; margin: 6px 0 4px; }
 /* ideas */
 .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 4px; }
 .idea-list { list-style: none; padding: 0; margin: 22px 0 0; display: grid; gap: 22px; }
-.idea h3 { font: 700 23px/1.2 var(--hand); text-transform: none; color: var(--ink); margin-bottom: 8px; }
+.idea h3 { font: 700 21px/1.25 var(--body); text-transform: none; color: var(--ink); margin-bottom: 8px; }
 .idea .said { font: 600 17px/1.45 var(--body); color: var(--ink); }
 .idea .note { font-size: 15px; margin: 0 0 8px; }
 .idea .foot { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 14px; color: #333; }
@@ -130,10 +128,8 @@ audio { width: 100%; margin: 6px 0 4px; }
 .host li { margin-bottom: 6px; }
 .promises { list-style: none; padding: 0; margin: 0; }
 .promises li { padding: 10px 0; border-top: 1px dashed #999; }
-.promises .status { font: 700 18px var(--hand); color: var(--teal); }
+.promises .status { font-weight: 700; font-style: italic; color: var(--teal); }
 .guests { columns: 2; column-gap: 20px; padding-left: 18px; }
-.curve svg { width: 100%; height: auto; }
-.curve text { font-family: var(--hand); font-weight: 700; fill: var(--teal); }
 
 @media (min-width: 700px) {
   body { font-size: 18px; }
@@ -142,5 +138,12 @@ audio { width: 100%; margin: 6px 0 4px; }
 @media (prefers-reduced-motion: reduce) { .tilt-l, .tilt-r { transform: none; } }
 footer.wrap { margin-top: 64px; }
 .newest h3 { text-transform: none; font-family: var(--body); font-weight: 700; font-size: 21px; line-height: 1.25; }
-.curve + p { margin-top: 12px; }
-.curve { max-width: 480px; }
+
+/* stand-in notebook photos */
+.photo { margin: 0 0 12px; }
+.photo img { width: 100%; border: 2px solid var(--teal); border-radius: 2px; box-shadow: 3px 4px 0 rgba(0, 44, 51, .18); background: #cbbf95; }
+.photo figcaption, .standin { font-size: 13px; color: var(--muted); margin-top: 6px; line-height: 1.4; }
+.idea .photo { margin: 2px 0 12px; }
+.idea .photo img { box-shadow: none; border-width: 1px; }
+.made .photo img { box-shadow: none; border-width: 1px; }
+.host .photo { margin-top: 10px; }

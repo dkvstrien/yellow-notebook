@@ -66,6 +66,8 @@
     var link = ep ? ' <a href="episodes.html#ep-' + i.ep + '">episode ' + i.ep + '</a>' : ' episode ' + i.ep;
     return '<li class="idea paper ' + (k % 2 ? 'tilt-r' : 'tilt-l') + '">' +
       '<h3>' + esc(i.idea) + '</h3>' +
+      (i.img ? '<figure class="photo"><img src="img/hand/' + esc(i.img) + '.webp" loading="lazy" decoding="async" width="1200" height="800" alt="' +
+        esc('Stand-in, not a real notebook: a computer-made photo of a yellow notebook page in ' + i.who + '’s imagined handwriting. ' + (i.imgText || '')) + '"></figure>' : '') +
       '<blockquote><p class="said">' + esc(i.quote) + '</p></blockquote>' +
       (i.note ? '<p class="note">' + esc(i.note) + '</p>' : '') +
       '<p class="foot"><span>' + esc(i.who) + ',' + link + ', <span class="t">' + esc(i.t) + '</span></span>' +

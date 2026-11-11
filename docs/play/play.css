@@ -78,3 +78,9 @@ footer { font-size: 15px; margin-top: 34px; padding-top: 10px; border-top: 2px d
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
 input::placeholder { color: var(--ink); opacity: .4; }
+
+/* stand-in notebook photo beside the intro; tap for full size */
+.nb { float: right; width: 44%; max-width: 240px; margin: 4px 0 8px 12px; text-decoration: none; transform: rotate(1.5deg); }
+.nb img { display: block; width: 100%; height: auto; border: 2px solid var(--ink); border-radius: 2px; box-shadow: 3px 4px 0 rgba(0, 44, 51, .25); }
+.nb span { display: block; font: 13px/1.2 system-ui, sans-serif; margin-top: 4px; text-align: center; }
+.lede::after { content: ""; display: block; clear: both; }
